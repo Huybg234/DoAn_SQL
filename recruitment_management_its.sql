@@ -88,19 +88,20 @@ CREATE TABLE permission(
 );
 
 CREATE TABLE jobs_register ( 
-    id NUMBER PRIMARY KEY NOT NULL, 
+    id NUMBER PRIMARY KEY NOT NULL,
     user_id NUMBER NOT NULL,
+    profile_status_id number not null,
     job_id NUMBER NOT NULL,
-    profile_status_id NUMBER NOT NULL,
-    date_register DATE NOT NULL, 
-    date_interview DATE NOT NULL,
-    method_interview VARCHAR(50) NOT NULL, 
-    cv_file VARCHAR(50), 
-    is_delete NUMBER NOT NULL, 
+    vacancies VARCHAR(50) not null,
+    application_time DATE NOT NULL ,
+    status VARCHAR(50) NOT NULL,
+    cv_file VARCHAR(50) ,
+    is_delete NUMBER NOT NULL,
     constraint fk_reg_status FOREIGN KEY(profile_status_id)REFERENCES profile_status(id),
     constraint fk_reg_user FOREIGN KEY(user_id)REFERENCES users(id),
     constraint fk_reg_jobs FOREIGN KEY(job_id)REFERENCES jobs(id)
 );
+
 insert into jobs_register values (1, 1, 1, '20-JUN-2000', '22-JUN-2000', 'ngon', 'cv', 1);
 insert into jobs_register values (2, 2, 2, '20-JUN-2000', '22-JUN-2000', 'ngon', 'cv', 1);
 
