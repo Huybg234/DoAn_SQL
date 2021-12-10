@@ -110,7 +110,7 @@ CREATE TABLE jobs(
     method_work_id  NUMBER NOT NULL,
     academic_level_id NUMBER(4) NOT NULL,
     level_rank_id NUMBER(4) NOT NULL,
-    create_id  NUMBER(4,2) NOT NULL,  
+    createx`_id  NUMBER(4,2) NOT NULL,  
     contact_id NUMBER(4,2) NOT NULL,
     job_name VARCHAR(100) NOT NULL,
     job_position VARCHAR(100) NOT NULL,
@@ -138,7 +138,6 @@ insert into jobs values (2, 2, 2, 2, 2, 2, 2, 'python', 'tester', 1, 'Hà Nội'
 
 CREATE TABLE method_work(
     id NUMBER PRIMARY KEY NOT NULL,
-    jobs_id number not null,
     method_name  VARCHAR(50) NOT NULL,
     description  VARCHAR(100) NOT NULL,
     is_delete INTEGER NOT NULL
@@ -206,10 +205,10 @@ CREATE TABLE company(
 );
 INSERT INTO company VALUES(1,N'Công ty itsol','itsol@itsol.com','0909999988','01-jun-2010','1000','01-jun-2010','Ha Noi','Duy Tan',500,'Itsol.com','Cong ty cong nghe','avatar','anh bia',0);
 
-Create table desiredwork(
+Create table desired_work(
     id NUMBER(4) primary key,
-    desiredworkname nvarchar2(50),
-     description  VARCHAR(100) NOT NULL,
+    desired_work_name nvarchar2(50),
+    description  VARCHAR(100) NOT NULL,
     is_delete INTEGER NOT NULL
 );
 insert into desiredwork values (1,'full time', 'toàn thời gian', 1);
