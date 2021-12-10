@@ -1,7 +1,6 @@
 --- level---
 Create table level_rank(
      id  NUMBER(4) primary key NOT NULL,
-     jobs_id number not null,
      level_name nvarchar2(50) NOT NULL,
      description nvarchar2(50),
      is_delete INTEGER NOT NULL
@@ -37,6 +36,8 @@ Create table profiles(
     is_delete INTEGER NOT NULL,
     CONSTRAINT fk_academic_level   FOREIGN KEY (academic_level_id)    REFERENCES academic_level (id),
     CONSTRAINT fk_user  FOREIGN KEY (user_id)  REFERENCES users (id)
+    CONSTRAINT fk_desire FOREIGN KEY (desire_id)  REFERENCES desiredwork (id)
+
 );
 
 
@@ -197,4 +198,10 @@ CREATE TABLE company(
     PRIMARY KEY(id )
 );
 
+Create table desiredwork(
+    id NUMBER(4) primary key,
+    desiredworkname nvarchar2(50),
+     description  VARCHAR(100) NOT NULL,
+    is_delete INTEGER NOT NULL
+);
 
