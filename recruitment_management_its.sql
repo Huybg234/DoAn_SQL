@@ -87,17 +87,19 @@ CREATE TABLE permission(
     CONSTRAINT fk_user_p  FOREIGN KEY (user_id)  REFERENCES users (id)
 );
 
-CREATE TABLE jobs_register(
-    id NUMBER PRIMARY KEY NOT NULL,
+CREATE TABLE jobs_register ( 
+    id NUMBER PRIMARY KEY NOT NULL, 
     user_id NUMBER NOT NULL,
-    profile_status_id number not null,
-    date_register DATE NOT NULL ,
+    job_id NUMBER NOT NULL,
+    profile_status_id NUMBER NOT NULL,
+    date_register DATE NOT NULL, 
     date_interview DATE NOT NULL,
-    method_interview VARCHAR(50) NOT NULL,
-    cv_file VARCHAR(50) ,
-    is_delete NUMBER NOT NULL,
-    CONSTRAINT fk_reg_status FOREIGN KEY (profile_status_id)  REFERENCES profile_status (id),
-    CONSTRAINT fk_reg_user FOREIGN KEY (user_id)  REFERENCES users (id)
+    method_interview VARCHAR(50) NOT NULL, 
+    cv_file VARCHAR(50), 
+    is_delete NUMBER NOT NULL, 
+    constraint fk_reg_status FOREIGN KEY(profile_status_id)REFERENCES profile_status(id),
+    constraint fk_reg_user FOREIGN KEY(user_id)REFERENCES users(id),
+    constraint fk_reg_jobs FOREIGN KEY(job_id)REFERENCES jobs(id)
 );
 insert into jobs_register values (1, 1, 1, '20-JUN-2000', '22-JUN-2000', 'ngon', 'cv', 1);
 insert into jobs_register values (2, 2, 2, '20-JUN-2000', '22-JUN-2000', 'ngon', 'cv', 1);
@@ -115,11 +117,13 @@ CREATE TABLE jobs(
     number_experience NUMBER NOT NULL,
     address_work VARCHAR(100) NOT NULL,
     quantity_person INTEGER NOT NULL,
+    create_date DATE NOT NULL,
     due_date DATE NOT NULL,
     skills VARCHAR(100) NOT NULL,
     description VARCHAR(100) NOT NULL,
     interrest VARCHAR(100) NOT NULL,
-    salary NUMBER NOT NULL,
+    min_salary NUMBER NOT NULL,
+    max_salary NUMBER NOT NULL,
     views  NUMBER(8,2) ,
    is_delete INTEGER NOT NULL,
     CONSTRAINT fk_method_work_j FOREIGN KEY (method_work_id)  REFERENCES method_work (id),
