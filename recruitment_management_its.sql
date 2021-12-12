@@ -53,18 +53,18 @@ insert into profile_status values (2, 'thông báo 2', 'không ?ng tuy?n', 0);
 
 
 CREATE TABLE role(
-    id NUMBER(4) NOT NULL,
+   id NUMBER(4) NOT NULL,
     role_code VARCHAR(20) NOT NULL UNIQUE,
     description VARCHAR(50) NOT NULL,
-    is_delete INTEGER NOT NULL,
+    name VARCHAR(50) NOT NULL,
     PRIMARY KEY(id)
 );
-insert into role values (1, '01452', 'je1', 1);
-insert into role values (2, '12385', 'je2', 0);
+insert into role values (1, '01452', 'je1', 'je');
+insert into role values (2, '12385', 'je2', 'je');
 
 
 CREATE TABLE users(
-    id NUMBER(4) NOT NULL  PRIMARY KEY,
+      id NUMBER(4) NOT NULL  PRIMARY KEY,
     full_name VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL UNIQUE ,
     user_name VARCHAR(20) NOT NULL UNIQUE,
@@ -72,11 +72,9 @@ CREATE TABLE users(
     phone_number  VARCHAR(20) NOT NULL UNIQUE,
     home_town VARCHAR(100) ,
     gender VARCHAR(100) ,
-    birth_day DATE NOT NULL ,
-    avatar VARCHAR(100),  
-    user_status INTEGER NOT NULL,
-    is_delete INTEGER NOT NULL
-   
+    birth_day DATE NOT NULL , 
+    is_delete INTEGER NOT NULL,
+    isActive INTEGER 
 );
 insert into users values (1, 'huy', 'nqhuybg', 'huydz', '123456', '0981995366', 'bg', 'nam', '20-JUN-2000', 'xx', 1, 1);
 insert into users values (2, 'hoang', 'nqhoangbg', 'hoangdz', '123456', '0981995316', 'bg', 'nam', '20-JUN-2000', 'xx', 1, 1);
@@ -164,14 +162,13 @@ insert into method_work values (2, 'offline', '?ng tuy?n offline', 1);
 
 
 CREATE TABLE OTP(
-    id NUMBER NOT NULL,
+  id NUMBER NOT NULL,
     code  NUMBER NOT NULL,
     issueAt NUMBER NOT NULL,
     create_date DATE NOT NULL, 
     user_id NUMBER NOT NULL,
     PRIMARY KEY(id ),
     CONSTRAINT fk_users FOREIGN KEY (user_id)  REFERENCES users (id)
-   
 );
 insert into OTP values (1, 12354, 1, '20-JUN-2000', 1);
 insert into OTP values (2, 12224, 0, '21-JUN-2000', 2);
@@ -259,6 +256,7 @@ CREATE TABLE jobs_register (
 );
 insert into jobs_register values (1, 1, 1, 1, '20-JUN-2000', '22-JUN-2000', 'ngon', 'cv', 1);
 insert into jobs_register values (2, 2, 2, 1, '20-JUN-2000', '22-JUN-2000', 'ngon', 'cv', 1);
+insert into jobs_register values (3, 2, 2, 1, '16-JUN-2000', '16-JUN-2000', 'ngon', 'cv', 1);
 
 
 
